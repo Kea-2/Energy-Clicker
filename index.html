@@ -39,7 +39,6 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-        <div id="unity-build-title">Energy Clicker</div>
       </div>
     </div>
     <script>
@@ -132,41 +131,45 @@
         });
       };
       document.body.appendChild(script);
-  function resizeCanvas() {
-  var canvasArea = container.getBoundingClientRect();
-  var width = canvasArea.width;
-  var height = canvasArea.height;
 
-  // Set the canvas size
-  canvas.width = width;
-  canvas.height = height;
-  canvas.style.width = "100%";
-  canvas.style.height = "100%";
-}
+   function resizeCanvas() {
+        var canvasArea = container.getBoundingClientRect();
+        var width = canvasArea.width;
+        var height = canvasArea.height;
 
-// Call the resizeCanvas function when the window is resized
-window.addEventListener("resize", resizeCanvas);
+        // Set the canvas size
+        canvas.width = width;
+        canvas.height = height;
+        canvas.style.width = "100%";
+        canvas.style.height = "100%";
+      }
 
-// Call the resizeCanvas function initially and after the game loads
-resizeCanvas();
+      // Call the resizeCanvas function when the window is resized
+      window.addEventListener("resize", resizeCanvas);
 
-var script = document.createElement("script");
-script.src = loaderUrl;
-script.onload = () => {
-  createUnityInstance(canvas, config, (progress) => {
-    progressBarFull.style.width = 100 * progress + "%";
-  }).then((unityInstance) => {
-    loadingBar.style.display = "none";
-    fullscreenButton.onclick = () => {
-      unityInstance.SetFullscreen(1);
-    };
+      // Call the resizeCanvas function initially and after the game loads
+      resizeCanvas();
 
-    // Call the resizeCanvas function after the game loads to ensure proper sizing
-    resizeCanvas();
-  }).catch((message) => {
-    alert(message);
-  });
-};
-document.body.appendChild(script);
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+
+          // Call the resizeCanvas function after the game loads to ensure proper sizing
+          resizeCanvas();
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+  </body>
+</html>
   </body>
 </html>
