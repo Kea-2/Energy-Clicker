@@ -130,7 +130,7 @@
       };
       document.body.appendChild(script);
 
-   function resizeCanvas() {
+         function resizeCanvas() {
         var canvasArea = container.getBoundingClientRect();
         var width = canvasArea.width;
         var height = canvasArea.height;
@@ -150,22 +150,19 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
-      script.onload = () => {
-        createUnityInstance(canvas, config, (progress) => {
+      script.onload = function() {
+        createUnityInstance(canvas, config, function(progress) {
           progressBarFull.style.width = 100 * progress + "%";
-        }).then((unityInstance) => {
+        }).then(function(unityInstance) {
           loadingBar.style.display = "none";
-          };
 
           // Call the resizeCanvas function after the game loads to ensure proper sizing
           resizeCanvas();
-        }).catch((message) => {
+        }).catch(function(message) {
           alert(message);
         });
       };
       document.body.appendChild(script);
     </script>
-  </body>
-</html>
   </body>
 </html>
