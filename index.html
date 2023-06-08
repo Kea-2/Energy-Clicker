@@ -39,7 +39,6 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      </div>
     </div>
     <script>
       var container = document.querySelector("#unity-container");
@@ -128,7 +127,8 @@
         });
       };
       document.body.appendChild(script);
-     function resizeCanvas() {
+
+      function resizeCanvas() {
         var canvasArea = container.getBoundingClientRect();
         var width = canvasArea.width;
         var height = canvasArea.height;
